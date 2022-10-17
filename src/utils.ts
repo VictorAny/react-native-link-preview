@@ -54,7 +54,7 @@ export const getImageSize = (url: string) => {
 
 // Functions below use functions from the same file and mocks are not working
 /* istanbul ignore next */
-export const getPreviewData = async (text: string, requestTimeout = 5000, mode = null) => {
+export const getPreviewData = async (text: string, requestTimeout = 5000, mode : string = "cors") => {
   const previewData: PreviewData = {
     description: undefined,
     image: undefined,
