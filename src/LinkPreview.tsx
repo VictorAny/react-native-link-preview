@@ -23,7 +23,8 @@ export interface LinkPreviewProps {
   metadataContainerStyle?: StyleProp<ViewStyle>
   metadataTextContainerStyle?: StyleProp<ViewStyle>
   onPreviewDataFetched?: (previewData: PreviewData) => void
-  previewData?: PreviewData
+  previewData?: PreviewData,
+  mode?: string,
   renderDescription?: (description: string) => React.ReactNode
   renderHeader?: (header: string) => React.ReactNode
   renderImage?: (image: PreviewDataImage) => React.ReactNode
@@ -48,6 +49,7 @@ export const LinkPreview = React.memo(
     header,
     metadataContainerStyle,
     metadataTextContainerStyle,
+    mode,
     onPreviewDataFetched,
     previewData,
     renderDescription,
@@ -77,7 +79,7 @@ export const LinkPreview = React.memo(
 
       const fetchData = async () => {
         setData(undefined)
-        const newData = await getPreviewData(text, requestTimeout)
+        const newData = await getPreviewData(text, requestTimeout, mode)
         // Set data only if component is still mounted
         /* istanbul ignore next */
         if (!isCancelled) {
